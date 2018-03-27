@@ -61,5 +61,5 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-    <display-name>mysite</display-name>
+    <display-name>webtool</display-name>
 </web-app>

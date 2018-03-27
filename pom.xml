@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.agth</groupId>
-    <artifactId>mysite</artifactId>
+    <artifactId>webtool</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 

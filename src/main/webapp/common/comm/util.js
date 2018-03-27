@@ -74,7 +74,7 @@ var comm = {
             fn(fn_param);
         }
     },
-    gcName: "/mysite",
+    gcName: "/webtool",
     // 包装angularjs的$http方法，使之好统一处理
     http: function (option, $http, $q) {
         var deferred = $q.defer();
