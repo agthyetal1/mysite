@@ -1,0 +1,19 @@
+.w150{
+	width:150px;
+}
+.w50{
+	width:50px;
+}
+
+table th {
+	text-align: center;
+}
+table td {
+  text-align: center;
+}
+.color_fail {
+	color:indianred;
+}
+.color_succ {
+	color:yellowgreen;
+}

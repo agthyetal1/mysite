@@ -1,0 +1,19 @@
+<!-- 分页  -->
+<div class="input-group pull-right" style="margin-left:10px;width: 100px">
+    <input type="text" class="form-control" ng-model="inputPageNum">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" ng-click="toPage(inputPageNum)">跳转</button>
+    </span>
+</div>
+<ul class="pagination no-margin pull-right">
+    <li>
+        <a ng-click="page.pageNum<2?'':toPage(page.pageNum-1)">上一页</a>
+    </li>
+    <li ng-repeat="pageNum in page.pageSumArray" class="{{page.pageNum == pageNum.key?'active':''}}">
+        <a ng-click="pageNum.key==''?'':toPage(pageNum.key)" ng-bind="pageNum.val"></a>
+    </li>
+    <li>
+        <a ng-click="page.pageNum==page.pageSum?'':toPage(page.pageNum-1+2)">下一页</a>
+    </li>
+    <li></li>
+</ul>
