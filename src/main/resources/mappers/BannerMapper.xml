@@ -5,6 +5,7 @@
 
 <mapper namespace="com.oil.dao.BannerDao">
     <select id="reportDays" resultType="map">
+
         select to_char(create_time, 'yyyy-mm-dd') day,count(1) num from p_user
         where create_time &gt;= #{begin} and create_time &lt; #{end}
         and removed = 0 and user_login_account not like '1400%'
