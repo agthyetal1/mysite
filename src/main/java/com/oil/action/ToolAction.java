@@ -32,15 +32,13 @@ public class ToolAction extends CommAction {
             String col = str2[0];
             col = col.toLowerCase();
             String type = str2[1];
-            if(type.toLowerCase().startsWith("number(3)")) {
+            if(type.toLowerCase().startsWith("number(1)") || type.toLowerCase().startsWith("number(2)") || type.toLowerCase().startsWith("number(3)")) {
                 type = "Integer";
             } else if(type.toLowerCase().startsWith("number(15_4)")) {
                 type = "Double";
             } else if(type.toLowerCase().startsWith("number")) {
                 type = "Long";
-            } else if(type.toLowerCase().startsWith("timestamp")) {
-                type = "Date";
-            } else if(type.toLowerCase().startsWith("date")) {
+            } else if(type.toLowerCase().startsWith("timestamp") || type.toLowerCase().startsWith("date")) {
                 type = "Date";
             } else {
                 type = "String";
@@ -51,7 +49,7 @@ public class ToolAction extends CommAction {
             }
             if("id".equals(col)) {
                 bean.append("@Id\r\n");
-                bean.append("@GeneratedValue(strategy = GenerationType.IDENTITY,generator = \"select seq_p_user.nextval from dual\")\r\n");
+                bean.append("@GeneratedValue(strategy = GenerationType.IDENTITY,generator = \"select xxx.nextval from dual\")\r\n");
             }
             bean.append("private "+type+" " + col2 + ";\r\n");
 
