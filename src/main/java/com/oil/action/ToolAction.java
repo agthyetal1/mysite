@@ -56,11 +56,6 @@ public class ToolAction extends CommAction {
                 }
             } else if(type.matches("^number\\(([0-9]+)_([0-9]+)\\)")) {
                 Matcher m = Pattern.compile("number\\(([0-9]+)_([0-9]+)\\)").matcher(type);
-                System.out.println(m.matches());
-                System.out.println(m.group(0));
-                System.out.println(m.group(1));
-                System.out.println(m.group(2));
-                System.out.println(m.groupCount());
                 if(Integer.parseInt(m.group(2)) == 0) {
                     if(Integer.parseInt(m.group(1)) <= 10) {
                         type = "Integer";
