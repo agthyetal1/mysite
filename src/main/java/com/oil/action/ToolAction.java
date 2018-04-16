@@ -3,6 +3,7 @@ package com.oil.action;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableMap;
 import com.oil.tool.CommAction;
+import com.oil.tool.Tool;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,16 +16,14 @@ import java.util.regex.Pattern;
 @RequestMapping("/tool")
 public class ToolAction extends CommAction {
 
-    public static void main(String[] args) {
-        Matcher m = Pattern.compile("number\\(([0-9]+)\\)").matcher("adfsdnumber(334434)");
-        System.out.println(m.matches());
-        System.out.println(m.group(0));
-        System.out.println(m.group(1));
-//        System.out.println(m.group(2));
-        System.out.println(m.groupCount());
-        System.out.println();
+    @RequestMapping(value = "/ip.do",method = RequestMethod.POST)
+    @ResponseBody
+    Object ip() {
+        String ip = getIp();
+        String ua = getUserAgent();
+        String ipName = Tool.ipToLocation(ip);
 
-
+        return success(ImmutableMap.of("ip", ip, "ipName", ipName));
     }
 
     @RequestMapping(value = "/ddl2bean.do",method = RequestMethod.POST)

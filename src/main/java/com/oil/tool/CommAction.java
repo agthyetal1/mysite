@@ -9,6 +9,18 @@ import java.util.Map;
 
 public class CommAction {
 
+	// 获取当前请求IP
+	public String getIp() {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		return Tool.getClientIp(request);
+	}
+
+	// 获取当前请求user-agent
+	public String getUserAgent() {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		return Tool.getUserAgent(request);
+	}
+
 	public Object success(Object data, String msg){
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("status", "0");
