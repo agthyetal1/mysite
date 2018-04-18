@@ -48,21 +48,25 @@ public class ToolAction extends CommAction {
             String type = str2[1];
             if(type.matches("^number\\([0-9]+\\)")) {
                 Matcher m = Pattern.compile("number\\(([0-9]+)\\)").matcher(type);
-                if(Integer.parseInt(m.group(1)) > 10) {
-                    type = "Long";
-                } else {
-                    type = "Integer";
+                if(m.find()) {
+                    if(Integer.parseInt(m.group(1)) > 10) {
+                        type = "Long";
+                    } else {
+                        type = "Integer";
+                    }
                 }
             } else if(type.matches("^number\\(([0-9]+)_([0-9]+)\\)")) {
                 Matcher m = Pattern.compile("number\\(([0-9]+)_([0-9]+)\\)").matcher(type);
-                if(Integer.parseInt(m.group(2)) == 0) {
-                    if(Integer.parseInt(m.group(1)) <= 10) {
-                        type = "Integer";
+                if(m.find()) {
+                    if(Integer.parseInt(m.group(2)) == 0) {
+                        if(Integer.parseInt(m.group(1)) <= 10) {
+                            type = "Integer";
+                        } else {
+                            type = "Long";
+                        }
                     } else {
-                        type = "Long";
+                        type = "Double";
                     }
-                } else {
-                    type = "Double";
                 }
             } else if(type.startsWith("number")) {
                 type = "Long";
@@ -88,5 +92,19 @@ public class ToolAction extends CommAction {
             }
         }
         return success( ImmutableMap.of("bean", bean.toString(), "mapper", mapper.toString()));
+    }
+
+    public static void main(String[] args) {
+
+        String x = "number(15_4)";
+        Matcher m = Pattern.compile("number\\(([0-9]+)_([0-9]+)\\)").matcher(x);
+//        System.out.println(m.find());
+        System.out.println(m.groupCount());
+        System.out.println(m.group());
+//        String a1 = m.group(0);
+//        System.out.println(a1);
+
+
+
     }
 }
